@@ -59,10 +59,6 @@
   .nav-cta:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 18px var(--accent-glow)}
   @media(max-width:720px){.nav-links{display:none}}
   header{padding:110px 0 84px}
-  .status{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-soft);background:var(--panel);border:1px solid var(--line-bright);padding:7px 14px;border-radius:100px;margin-bottom:30px}
-  .status .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);position:relative}
-  .status .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:var(--accent);opacity:.4;animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
-  @keyframes ping{75%,100%{transform:scale(2.4);opacity:0}}
   h1{font-weight:800;font-size:clamp(2.6rem,7.2vw,5rem);line-height:1.04;letter-spacing:-.03em;margin-bottom:26px}
   h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lede{font-size:clamp(1.08rem,2.1vw,1.3rem);max-width:640px;color:var(--text-soft);font-weight:400}
@@ -110,6 +106,8 @@
   .pub-row .yr{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);white-space:nowrap}
   .pub-row h4{font-weight:500;font-size:1.04rem;line-height:1.3;margin-bottom:3px}
   .pub-row .v{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim)}
+  .pub-row h4 a{color:inherit;text-decoration:none;transition:color .2s}
+  .pub-row h4 a:hover{color:var(--accent)}
   @media(max-width:520px){.pub-row{flex-direction:column;align-items:flex-start;gap:8px}}
   .two{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:start}
   @media(max-width:760px){.two{grid-template-columns:1fr;gap:34px}}
@@ -155,9 +153,8 @@
 </nav>
 <header>
   <div class="wrap">
-    <div class="status reveal"><span class="pulse"></span>Open to work &middot; ML / AI Engineer</div>
     <h1 class="reveal">I build<br><span class="g">machine learning</span> systems.</h1>
-    <p class="lede reveal">Machine learning engineer and co-author of <b>SlimLM</b> (ACL 2025). I work across <b>small language models</b>, <b>multi-agent AI</b>, and <b>financial ML</b> &mdash; from model internals to working end-to-end systems.</p>
+    <p class="lede reveal">Computer Science MS (<b>Georgia Tech</b>, Machine Learning) and Finance MBA with published research (ACL 2025, <b>SlimLM</b>). Proven background in statistical modeling, feature engineering, and end-to-end ML development. Translates complex financial and behavioral datasets into production-ready models, interactive dashboards, and actionable business tools.</p>
     <div class="hero-cta reveal">
       <a class="btn primary" href="#work">View my work &rarr;</a>
       <a class="btn ghost" href="https://github.com/PhatNguyen39" target="_blank" rel="noopener">GitHub</a>
@@ -224,7 +221,7 @@
     <div class="pub-row reveal">
       <span class="yr">2026</span>
       <div>
-        <h4>Toward Reliable Evaluation of LLM-Based Financial Multi-Agent Systems</h4>
+        <h4><a href="https://link.springer.com/chapter/10.1007/978-981-92-2014-4_26" target="_blank" rel="noopener">Toward Reliable Evaluation of LLM-Based Financial Multi-Agent Systems</a></h4>
         <span class="v">DMO-FinTech Workshop &middot; PAKDD 2026</span>
       </div>
     </div>
@@ -302,7 +299,7 @@
       <div class="contact-links">
         <a class="btn primary" href="mailto:cherry.07.skr@gmail.com">Email me &rarr;</a>
         <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Download r&eacute;sum&eacute;</a>
-        <a class="btn ghost" href="https://github.com/PhatNguyen39" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://github.com/NGUYENTHINHPHAT" target="_blank" rel="noopener">GitHub</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/phat-ng/" target="_blank" rel="noopener" id="li">LinkedIn</a>
         <a class="btn ghost" href="https://aclanthology.org/2025.acl-demo.42/" target="_blank" rel="noopener">ACL</a>
       </div>
