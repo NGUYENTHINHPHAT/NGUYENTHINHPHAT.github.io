@@ -102,7 +102,7 @@
   .venue{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-dim);margin-bottom:18px;position:relative}
   .feature p{color:var(--text-soft);font-size:.96rem;margin-bottom:22px;max-width:760px;position:relative}
   .feat-links{display:flex;gap:12px;flex-wrap:wrap;position:relative}
-  .pub-row{margin-top:18px;display:flex;align-items:center;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 24px}
+  .pub-row{margin-top:18px;display:flex;align-items:flex-start;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 24px}
   .pub-row .yr{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);white-space:nowrap}
   .pub-row h4{font-weight:500;font-size:1.04rem;line-height:1.3;margin-bottom:3px}
   .pub-row .v{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim)}
@@ -211,7 +211,7 @@
       <h3>SlimLM: An Efficient Small Language Model for On-Device Document Assistance</h3>
       <p class="authors">Thang M. Pham, <b>Phat T. Nguyen</b>, Seunghyun Yoon, Viet Dac Lai, Franck Dernoncourt, Trung Bui</p>
       <p class="venue">Proc. of ACL 2025 (Vol. 3: System Demonstrations), pp. 436&ndash;447 &middot; Vienna</p>
-      <p>A series of small language models (125M&ndash;8B params) optimized to run fully on-device on a Samsung Galaxy S24 for document tasks &mdash; summarization, QA, question suggestion. We map the size / context-length / latency trade-offs for real smartphone deployment, cutting server cost and improving privacy. Published in the ACL 2025 System Demonstrations track; work done with Adobe Research.</p>
+      <p>A series of small language models (125M&ndash;1B params) optimized to run fully on-device on a Samsung Galaxy S24 for document tasks &mdash; summarization, QA, question suggestion. We map the size / context-length / latency trade-offs for real smartphone deployment, cutting server cost and improving privacy. Published in the ACL 2025 System Demonstrations track; work done with Adobe Research.</p>
       <div class="feat-links">
         <a class="btn primary" href="https://aclanthology.org/2025.acl-demo.42/" target="_blank" rel="noopener">ACL Anthology &rarr;</a>
         <a class="btn ghost" href="https://aclanthology.org/2025.acl-demo.42.pdf" target="_blank" rel="noopener">PDF</a>
@@ -223,6 +223,7 @@
       <div>
         <h4><a href="https://link.springer.com/chapter/10.1007/978-981-92-2014-4_26" target="_blank" rel="noopener">Toward Reliable Evaluation of LLM-Based Financial Multi-Agent Systems</a></h4>
         <span class="v">DMO-FinTech Workshop &middot; PAKDD 2026</span>
+        <p style="color:var(--text-soft);font-size:.88rem;margin-top:8px">Audited evaluation validity across 14 LLM multi-agent systems against 5 methodology failures and proposed a Coordination Breakeven Spread metric.</p>
       </div>
     </div>
   </div>
