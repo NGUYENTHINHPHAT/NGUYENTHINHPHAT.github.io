@@ -79,7 +79,7 @@
   .sec-title{font-weight:700;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.02em}
   .sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line-bright),transparent)}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;display:block;color:inherit;text-decoration:none;cursor:pointer}
   .card::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
   .card:hover{transform:translateY(-6px);border-color:transparent}
   .card:hover::before{opacity:1}
@@ -175,27 +175,27 @@
     </div>
     <p style="color:var(--text-soft);margin:-30px 0 34px;font-size:.95rem;max-width:680px">Working demo systems I built to show how I design and deploy ML end-to-end. Each one is live &mdash; click through and try it.</p>
     <div class="grid">
-      <div class="card reveal">
+      <a class="card reveal" href="https://huggingface.co/spaces/PhatNguyen39/Multi-Agent-Fin-Debate-System" target="_blank" rel="noopener">
         <div class="card-top"><span class="card-idx">01</span><span class="live"><span class="d"></span>LIVE</span></div>
         <h3>Multi-Agent Finance Debate System</h3>
         <p>LangGraph-orchestrated system where specialized agents debate financial forecasts, challenge each other's reasoning, and converge on executive-level recommendations. Also the trace source for my LLM-as-judge evaluation research.</p>
         <div class="tags"><span class="tag">LangGraph</span><span class="tag">Multi-Agent</span><span class="tag">LLM Orchestration</span></div>
-        <a class="card-link" href="https://huggingface.co/spaces/PhatNguyen39/Multi-Agent-Fin-Debate-System" target="_blank" rel="noopener">Live demo &rarr;</a>
-      </div>
-      <div class="card reveal">
+        <span class="card-link">Live demo &rarr;</span>
+      </a>
+      <a class="card reveal" href="https://phatnguyen39-stock-prediction-pipeline.hf.space/dashboard" target="_blank" rel="noopener">
         <div class="card-top"><span class="card-idx">02</span><span class="live"><span class="d"></span>LIVE</span></div>
         <h3>Stock Direction Prediction Pipeline</h3>
         <p>End-to-end ML pipeline for stock direction prediction with XGBoost &mdash; feature engineering, training, hyperparameter tuning, served behind an interactive real-time dashboard.</p>
         <div class="tags"><span class="tag">XGBoost</span><span class="tag">Feature Eng.</span><span class="tag">Streamlit</span></div>
-        <a class="card-link" href="https://phatnguyen39-stock-prediction-pipeline.hf.space/dashboard" target="_blank" rel="noopener">Live demo &rarr;</a>
-      </div>
-      <div class="card reveal">
+        <span class="card-link">Live demo &rarr;</span>
+      </a>
+      <a class="card reveal" href="https://huggingface.co/spaces/PhatNguyen39/ai-variance-analyst" target="_blank" rel="noopener">
         <div class="card-top"><span class="card-idx">03</span><span class="live"><span class="d"></span>LIVE</span></div>
         <h3>FP&amp;A Copilot &mdash; AI Variance Analyst</h3>
         <p>LLM + RAG system for automated budget-vs-actual analysis with full auditability. Combines anomaly detection with LLM-generated insights, producing executive-ready reports with traceable, hallucination-free outputs.</p>
         <div class="tags"><span class="tag">RAG</span><span class="tag">Anomaly Detection</span><span class="tag">FastAPI</span></div>
-        <a class="card-link" href="https://huggingface.co/spaces/PhatNguyen39/ai-variance-analyst" target="_blank" rel="noopener">Live demo &rarr;</a>
-      </div>
+        <span class="card-link">Live demo &rarr;</span>
+      </a>
     </div>
   </div>
 </section>
@@ -297,7 +297,7 @@
       <h2>Let's build something.</h2>
       <p>Open to ML / AI engineering roles. Happy to walk through any of these systems in detail.</p>
       <div class="contact-links">
-        <a class="btn primary" href="mailto:cherry.07.skr@gmail.com">Email me &rarr;</a>
+        <a class="btn primary" href="mailto:phat.thnguyen@gmail.com">Email me &rarr;</a>
         <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Download r&eacute;sum&eacute;</a>
         <a class="btn ghost" href="https://github.com/NGUYENTHINHPHAT" target="_blank" rel="noopener">GitHub</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/phat-ng/" target="_blank" rel="noopener" id="li">LinkedIn</a>
