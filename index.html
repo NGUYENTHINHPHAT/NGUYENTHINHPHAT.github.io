@@ -3,315 +3,460 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phat T. Nguyen — Machine Learning Engineer</title>
-<meta name="description" content="Phat T. Nguyen — Machine Learning Engineer. I build and ship ML systems: small language models, multi-agent AI, and financial ML. Co-author of SlimLM.">
+<title>Phat T. Nguyen — FP&amp;A Systems &amp; Finance Automation</title>
+<meta name="description" content="Phat T. Nguyen — Finance &amp; systems analyst. MBA in Finance + M.S. in Computer Science (Georgia Tech). I automate variance analysis, reconciliation, and financial reporting with Python and SQL.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0e14;
-    --bg-2:#0f1520;
-    --panel:#121925;
-    --panel-2:#161f2e;
-    --line:#1f2a3a;
-    --line-bright:#2b3a50;
-    --text:#e6edf6;
-    --text-soft:#9fb0c5;
-    --text-dim:#5e7088;
-    --accent:#4ade80;
-    --accent-2:#22d3ee;
-    --accent-glow:rgba(74,222,128,.18);
-    --grad:linear-gradient(120deg,#4ade80,#22d3ee);
+    --bg:#f7f8fa;
+    --surface:#ffffff;
+    --surface-2:#f1f4f7;
+    --line:#e3e8ee;
+    --line-strong:#cfd7e1;
+    --text:#0f1b2d;
+    --text-soft:#4a5a70;
+    --text-dim:#7a889b;
+    --accent:#0f6e64;
+    --accent-soft:#e3f2ef;
+    --navy:#1c3557;
+    --pos:#15803d;
+    --neg:#b42318;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     background:var(--bg);
     color:var(--text);
-    font-family:'Sora',sans-serif;
-    line-height:1.65;
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    font-feature-settings:"tnum" 1;
   }
-  body::before{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(600px 400px at 78% -5%,var(--accent-glow),transparent 60%),
-      radial-gradient(560px 420px at 8% 18%,rgba(34,211,238,.10),transparent 60%);
-  }
-  body::after{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;
-    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:64px 64px;
-    mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,#000 30%,transparent 75%);
-    -webkit-mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,#000 30%,transparent 75%);
-  }
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
-  nav{position:sticky;top:0;z-index:50;background:rgba(10,14,20,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  a{color:inherit}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+  .serif{font-family:'Source Serif 4',Georgia,serif}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,248,250,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .brand{font-weight:700;font-size:1rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
-  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
-  .nav-links{display:flex;gap:28px;font-family:'JetBrains Mono',monospace;font-size:.8rem}
-  .nav-links a{color:var(--text-soft);text-decoration:none;transition:color .2s}
+  .brand{font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none}
+  .brand span{color:var(--text-dim);font-weight:500}
+  .nav-links{display:flex;gap:26px;font-size:.88rem}
+  .nav-links a{color:var(--text-soft);text-decoration:none;transition:color .15s}
   .nav-links a:hover{color:var(--accent)}
-  .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.78rem;border:1px solid var(--line-bright);color:var(--text);padding:7px 14px;border-radius:7px;text-decoration:none;transition:.2s}
-  .nav-cta:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 18px var(--accent-glow)}
-  @media(max-width:720px){.nav-links{display:none}}
-  header{padding:110px 0 84px}
-  h1{font-weight:800;font-size:clamp(2.6rem,7.2vw,5rem);line-height:1.04;letter-spacing:-.03em;margin-bottom:26px}
-  h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .lede{font-size:clamp(1.08rem,2.1vw,1.3rem);max-width:640px;color:var(--text-soft);font-weight:400}
+  .nav-cta{font-size:.85rem;font-weight:600;background:var(--navy);color:#fff;padding:8px 15px;border-radius:8px;text-decoration:none;transition:background .15s}
+  .nav-cta:hover{background:var(--accent)}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* HERO */
+  header{padding:96px 0 72px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff, var(--bg))}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:5px 12px;border-radius:100px;margin-bottom:24px}
+  h1{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(2.3rem,5.6vw,3.9rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:24px;max-width:860px}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{font-size:clamp(1.05rem,1.8vw,1.2rem);max-width:700px;color:var(--text-soft)}
   .lede b{color:var(--text);font-weight:600}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
-  .btn{font-family:'JetBrains Mono',monospace;font-size:.84rem;text-decoration:none;padding:12px 22px;border-radius:9px;transition:.2s;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-  .btn.primary{background:var(--accent);color:#06210f;box-shadow:0 0 24px var(--accent-glow)}
-  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 30px var(--accent-glow)}
-  .btn.ghost{border:1px solid var(--line-bright);color:var(--text)}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+  .btn{font-size:.9rem;font-weight:600;text-decoration:none;padding:11px 20px;border-radius:9px;transition:.15s;display:inline-flex;align-items:center;gap:8px}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--navy)}
+  .btn.ghost{border:1px solid var(--line-strong);color:var(--text);background:var(--surface)}
   .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-  .hero-stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:54px;padding-top:34px;border-top:1px solid var(--line)}
-  .stat .n{font-size:1.7rem;font-weight:700;letter-spacing:-.02em}
-  .stat .n .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .stat .l{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--text-dim);margin-top:2px}
-  section{padding:74px 0;position:relative}
-  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:46px}
-  .sec-tag{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent)}
-  .sec-title{font-weight:700;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.02em}
-  .sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line-bright),transparent)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;display:block;color:inherit;text-decoration:none;cursor:pointer}
-  .card::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
-  .card:hover{transform:translateY(-6px);border-color:transparent}
-  .card:hover::before{opacity:1}
-  .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
-  .card-idx{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent)}
-  .live{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--accent);border:1px solid var(--line-bright);padding:3px 8px;border-radius:6px;display:inline-flex;align-items:center;gap:5px}
-  .live .d{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
-  .card h3{font-weight:600;font-size:1.24rem;line-height:1.25;margin-bottom:11px;letter-spacing:-.01em}
-  .card p{color:var(--text-soft);font-size:.92rem;margin-bottom:18px}
-  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
-  .tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;background:var(--panel-2);color:var(--text-soft);padding:4px 9px;border-radius:6px;border:1px solid var(--line)}
-  .card-link{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:gap .2s}
-  .card-link:hover{gap:12px}
-  .feature{background:linear-gradient(135deg,var(--panel),var(--bg-2));border:1px solid var(--line-bright);border-radius:18px;padding:36px 38px;position:relative;overflow:hidden}
-  .feature::after{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,var(--accent-glow),transparent 70%);pointer-events:none}
-  .feat-badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#06210f;background:var(--accent);padding:5px 12px;border-radius:100px;margin-bottom:18px;font-weight:600;letter-spacing:.02em}
-  .feature h3{font-weight:700;font-size:1.5rem;line-height:1.2;margin-bottom:12px;letter-spacing:-.01em;position:relative}
-  .authors{font-size:.95rem;color:var(--text-soft);margin-bottom:5px;position:relative}
-  .authors b{color:var(--accent);font-weight:600}
-  .venue{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-dim);margin-bottom:18px;position:relative}
-  .feature p{color:var(--text-soft);font-size:.96rem;margin-bottom:22px;max-width:760px;position:relative}
-  .feat-links{display:flex;gap:12px;flex-wrap:wrap;position:relative}
-  .pub-row{margin-top:18px;display:flex;align-items:flex-start;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 24px}
-  .pub-row .yr{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);white-space:nowrap}
-  .pub-row h4{font-weight:500;font-size:1.04rem;line-height:1.3;margin-bottom:3px}
-  .pub-row .v{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim)}
-  .pub-row h4 a{color:inherit;text-decoration:none;transition:color .2s}
-  .pub-row h4 a:hover{color:var(--accent)}
-  @media(max-width:520px){.pub-row{flex-direction:column;align-items:flex-start;gap:8px}}
-  .two{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:start}
-  @media(max-width:760px){.two{grid-template-columns:1fr;gap:34px}}
-  .about p{color:var(--text-soft);font-size:1.02rem;margin-bottom:16px}
-  .about p b{color:var(--text);font-weight:600}
-  .skills{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px}
-  .skills h4{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--accent);margin-bottom:18px;letter-spacing:.06em}
-  .skg{margin-bottom:16px}.skg:last-child{margin-bottom:0}
-  .skg .lab{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim);margin-bottom:8px}
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .stat{padding:20px 22px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .n{font-size:1.35rem;font-weight:700;letter-spacing:-.01em;color:var(--navy)}
+  .stat .l{font-size:.8rem;color:var(--text-dim);margin-top:2px}
+  @media(max-width:760px){.hero-stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+  /* SECTIONS */
+  section{padding:76px 0}
+  .sec-head{margin-bottom:36px}
+  .sec-tag{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .sec-title{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(1.7rem,3.6vw,2.3rem);letter-spacing:-.015em}
+  .sec-sub{color:var(--text-soft);margin-top:8px;max-width:680px}
+
+  /* PILLARS */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.pillars{grid-template-columns:1fr}}
+  .pillar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .pillar .ic{width:36px;height:36px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:14px}
+  .pillar h3{font-size:1.05rem;font-weight:600;margin-bottom:6px}
+  .pillar p{font-size:.92rem;color:var(--text-soft)}
+
+  /* PROJECTS */
+  .proj{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px;display:block;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s}
+  .proj:hover{border-color:var(--accent);box-shadow:0 10px 30px rgba(15,27,45,.07);transform:translateY(-3px)}
+  .proj-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .kicker{font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim)}
+  .live{font-size:.72rem;font-weight:600;color:var(--pos);background:#e8f5ec;padding:3px 9px;border-radius:100px;display:inline-flex;align-items:center;gap:6px}
+  .live .d{width:6px;height:6px;border-radius:50%;background:var(--pos)}
+  .proj h3{font-size:1.25rem;font-weight:700;line-height:1.3;margin-bottom:10px;letter-spacing:-.01em}
+  .proj p{color:var(--text-soft);font-size:.94rem;margin-bottom:14px}
+  .proj ul{list-style:none;margin-bottom:18px}
+  .proj li{position:relative;padding-left:18px;font-size:.92rem;color:var(--text-soft);margin-bottom:7px}
+  .proj li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:2px;background:var(--accent)}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .tag{font-size:.75rem;font-weight:500;background:var(--surface-2);color:var(--text-soft);padding:4px 10px;border-radius:6px}
+  .proj-link{font-size:.88rem;font-weight:600;color:var(--accent)}
+
+  .featured{display:grid;grid-template-columns:1.15fr 1fr;gap:30px;align-items:center;margin-bottom:20px}
+  @media(max-width:860px){.featured{grid-template-columns:1fr}}
+  .feat-badge{font-size:.72rem;font-weight:700;color:#fff;background:var(--navy);padding:4px 10px;border-radius:100px}
+
+  /* variance mock table */
+  .vtable{border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:.82rem;background:#fff}
+  .vtable .vh{background:var(--surface-2);font-size:.72rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.04em}
+  .vrow{display:grid;grid-template-columns:1.5fr 1fr 1fr .85fr 1.05fr;gap:6px;padding:9px 14px;border-top:1px solid var(--line);align-items:center}
+  .vrow:first-child{border-top:0}
+  .vrow .r{text-align:right}
+  .neg{color:var(--neg);font-weight:600}
+  .pos{color:var(--pos);font-weight:600}
+  .flag{font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:5px;justify-self:end;white-space:nowrap}
+  .flag.miss{background:#fdecea;color:var(--neg)}
+  .flag.beat{background:#e8f5ec;color:var(--pos)}
+  .flag.ok{background:var(--surface-2);color:var(--text-dim)}
+  .vnote{font-size:.74rem;color:var(--text-dim);padding:10px 14px;border-top:1px solid var(--line);background:var(--surface-2)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:860px){.grid2{grid-template-columns:1fr}}
+
+  /* EXPERIENCE */
+  .alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .job{display:grid;grid-template-columns:190px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+  .job:first-of-type{border-top:0;padding-top:0}
+  @media(max-width:700px){.job{grid-template-columns:1fr;gap:6px}}
+  .job .when{font-size:.85rem;color:var(--text-dim);font-weight:500;padding-top:3px}
+  .job h3{font-size:1.08rem;font-weight:700}
+  .job .org{font-size:.92rem;color:var(--accent);font-weight:500;margin-bottom:10px}
+  .job ul{list-style:none}
+  .job li{position:relative;padding-left:18px;font-size:.93rem;color:var(--text-soft);margin-bottom:6px}
+  .job li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--line-strong)}
+
+  /* SKILLS + EDU */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:760px){.skills{grid-template-columns:1fr}}
+  .skg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .skg h4{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-bottom:12px}
   .skg .row{display:flex;flex-wrap:wrap;gap:7px}
-  .chip{font-size:.8rem;background:var(--panel-2);border:1px solid var(--line);color:var(--text-soft);padding:5px 11px;border-radius:7px}
-  .tl{position:relative;padding-left:26px}
-  .tl::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--line-bright)}
-  .ti{position:relative;padding-bottom:30px}.ti:last-child{padding-bottom:0}
-  .ti::before{content:"";position:absolute;left:-26px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
-  .ti .when{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--text-dim);margin-bottom:3px}
-  .ti h4{font-weight:600;font-size:1.1rem;margin-bottom:2px}
-  .ti .org{font-size:.9rem;color:var(--accent-2);margin-bottom:7px}
-  .ti p{font-size:.9rem;color:var(--text-soft)}
-  .contact{text-align:center;padding:96px 0}
-  .contact .panel{background:linear-gradient(135deg,var(--panel),var(--bg-2));border:1px solid var(--line-bright);border-radius:22px;padding:64px 32px;position:relative;overflow:hidden}
-  .contact .panel::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 200px at 50% 0%,var(--accent-glow),transparent 70%);pointer-events:none}
-  .contact h2{font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.02em;margin-bottom:16px;position:relative}
-  .contact p{color:var(--text-soft);max-width:480px;margin:0 auto 32px;position:relative}
-  .contact-links{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;position:relative}
-  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--text-dim)}
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .chip{font-size:.83rem;background:var(--surface-2);color:var(--text);padding:5px 11px;border-radius:7px}
+  .skg.lead{border-color:var(--accent);box-shadow:inset 0 3px 0 var(--accent)}
+
+  .edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+  @media(max-width:860px){.edu{grid-template-columns:1fr}}
+  .edu-c{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .edu-c .deg{font-weight:700;font-size:1rem;margin-bottom:3px}
+  .edu-c .sch{color:var(--text-soft);font-size:.9rem}
+  .edu-c .meta{color:var(--text-dim);font-size:.82rem;margin-top:8px}
+
+  /* PUBLICATIONS */
+  .pub{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-bottom:14px;display:grid;grid-template-columns:70px 1fr;gap:18px}
+  @media(max-width:600px){.pub{grid-template-columns:1fr;gap:6px}}
+  .pub .yr{font-weight:700;color:var(--accent)}
+  .pub h4{font-size:1.02rem;font-weight:600;line-height:1.35;margin-bottom:3px}
+  .pub h4 a{text-decoration:none}
+  .pub h4 a:hover{color:var(--accent)}
+  .pub .v{font-size:.82rem;color:var(--text-dim);margin-bottom:7px}
+  .pub p{font-size:.9rem;color:var(--text-soft)}
+  .pub .links{margin-top:9px;display:flex;gap:14px;font-size:.84rem;font-weight:600}
+  .pub .links a{color:var(--accent);text-decoration:none}
+
+  /* CONTACT */
+  .contact{padding:84px 0}
+  .contact .panel{background:var(--navy);color:#fff;border-radius:20px;padding:56px 36px;text-align:center}
+  .contact h2{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(1.8rem,4.4vw,2.7rem);margin-bottom:12px}
+  .contact p{color:#c4d0df;max-width:580px;margin:0 auto 28px}
+  .contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+  .contact .btn.primary{background:#fff;color:var(--navy)}
+  .contact .btn.primary:hover{background:var(--accent-soft)}
+  .contact .btn.ghost{background:transparent;border-color:rgba(255,255,255,.3);color:#fff}
+  .contact .btn.ghost:hover{border-color:#fff;color:#fff}
+  .auth{margin-top:22px;font-size:.84rem;color:#9fb1c7}
+
+  footer{padding:26px 0 40px;text-align:center;font-size:.8rem;color:var(--text-dim)}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
+
 <nav>
   <div class="wrap nav-inner">
-    <div class="brand"><span class="dot"></span>Phat T. Nguyen</div>
+    <a class="brand" href="#">Phat T. Nguyen <span>· MBA, MSCS</span></a>
     <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#research">Research</a>
-      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
     </div>
-    <a class="nav-cta" href="resume.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute; &darr;</a>
+    <a class="nav-cta" href="resume.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute;</a>
   </div>
 </nav>
+
 <header>
   <div class="wrap">
-    <h1 class="reveal">I build<br><span class="g">machine learning</span> systems.</h1>
-    <p class="lede reveal">Computer Science MS (<b>Georgia Tech</b>, Machine Learning) and Finance MBA with published research (ACL 2025, <b>SlimLM</b>). Proven background in statistical modeling, feature engineering, and end-to-end ML development. Translates complex financial and behavioral datasets into production-ready models, interactive dashboards, and actionable business tools.</p>
+    <span class="eyebrow reveal">FP&amp;A Systems &middot; Financial Operations &middot; Finance Automation</span>
+    <h1 class="reveal">I turn manual finance work into <em>accurate, automated, auditable</em> systems.</h1>
+    <p class="lede reveal">Finance &amp; systems analyst with an <b>MBA in Finance</b> and an <b>M.S. in Computer Science</b> from Georgia Tech. Hands-on in budgeting, variance analysis, forecasting, AP and month-end close, and I build the <b>Python, SQL and BI</b> tools that make that work faster and easier to trust.</p>
     <div class="hero-cta reveal">
-      <a class="btn primary" href="#work">View my work &rarr;</a>
-      <a class="btn ghost" href="https://github.com/NGUYENTHINHPHAT" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn primary" href="#projects">See the projects &rarr;</a>
+      <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Download r&eacute;sum&eacute;</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/phat-ng/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div class="hero-stats reveal">
-      <div class="stat"><div class="n">M.S. <span class="g">CS / ML</span></div><div class="l">Georgia Tech &middot; 4.0 GPA</div></div>
-      <div class="stat"><div class="n"><span class="g">2</span> papers</div><div class="l">ACL 2025 + PAKDD workshop</div></div>
-      <div class="stat"><div class="n"><span class="g">3</span> live demos</div><div class="l">built &amp; deployed</div></div>
+      <div class="stat"><div class="n">MBA, Finance</div><div class="l">CSU East Bay &middot; 3.88 GPA</div></div>
+      <div class="stat"><div class="n">M.S., CS</div><div class="l">Georgia Tech &middot; 4.0 GPA</div></div>
+      <div class="stat"><div class="n">3 live tools</div><div class="l">FP&amp;A, forecasting, decision support</div></div>
+      <div class="stat"><div class="n">Bay Area</div><div class="l">U.S. Permanent Resident</div></div>
     </div>
   </div>
 </header>
-<section id="work">
+
+<section id="focus">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-tag">01 //</span>
-      <h2 class="sec-title">What I build</h2>
-      <span class="sec-line"></span>
+      <div class="sec-tag">What I do</div>
+      <h2 class="sec-title">Finance knowledge plus engineering</h2>
+      <p class="sec-sub">Most finance teams have people who understand the P&amp;L or people who can write code. I do both, so the automation actually matches how the books work.</p>
     </div>
-    <p style="color:var(--text-soft);margin:-30px 0 34px;font-size:.95rem;max-width:680px">Working demo systems I built to show how I design and deploy ML end-to-end. Each one is live &mdash; click through and try it.</p>
-    <div class="grid">
-      <a class="card reveal" href="https://huggingface.co/spaces/PhatNguyen39/Multi-Agent-Fin-Debate-System" target="_blank" rel="noopener">
-        <div class="card-top"><span class="card-idx">01</span><span class="live"><span class="d"></span>LIVE</span></div>
-        <h3>Multi-Agent Finance Debate System</h3>
-        <p>LangGraph-orchestrated system where specialized agents debate financial forecasts, challenge each other's reasoning, and converge on executive-level recommendations. Also the trace source for my LLM-as-judge evaluation research.</p>
-        <div class="tags"><span class="tag">LangGraph</span><span class="tag">Multi-Agent</span><span class="tag">LLM Orchestration</span></div>
-        <span class="card-link">Live demo &rarr;</span>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="ic">&Delta;</div>
+        <h3>Variance &amp; management reporting</h3>
+        <p>Budget-vs-actual analysis with materiality thresholds, trend detection, and commentary that traces every figure back to source data.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ic">&#10003;</div>
+        <h3>Close, AP &amp; reconciliation</h3>
+        <p>GL coding, 3-way matching, accruals, and budget reconciliation, plus the data checks that catch errors before fiscal close.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ic">&#8599;</div>
+        <h3>Forecasting &amp; financial data</h3>
+        <p>Cash runway, cost and revenue forecasts, and validated data pipelines with backtesting that avoids look-ahead bias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Projects</div>
+      <h2 class="sec-title">Finance tools I built and deployed</h2>
+      <p class="sec-sub">All three are live. Click through and try them.</p>
+    </div>
+
+    <a class="proj featured reveal" href="https://huggingface.co/spaces/PhatNguyen39/ai-variance-analyst" target="_blank" rel="noopener">
+      <div>
+        <div class="proj-top"><span class="feat-badge">Featured &middot; FP&amp;A</span><span class="live"><span class="d"></span>Live demo</span></div>
+        <h3>FP&amp;A Copilot: Automated Budget Variance Analysis</h3>
+        <p>Automates the budget-vs-actual review that usually takes analysts hours every month-end.</p>
+        <ul>
+          <li>Rules engine flags material variances: 10 / 20 / 30% severity tiers, $5K minimum floor, Z-score outliers, 3-period trend detection, BEAT / MISS labels.</li>
+          <li>Retrieval pulls business context to explain <i>why</i> each line moved.</li>
+          <li>Groundedness check maps every cited figure back to source data, so the commentary never invents a number.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Outlier detection</span><span class="tag">RAG</span></div>
+        <span class="proj-link">Open the demo &rarr;</span>
+      </div>
+      <div class="vtable" aria-hidden="true">
+        <div class="vrow vh"><span>Account</span><span class="r">Budget</span><span class="r">Actual</span><span class="r">Var %</span><span class="r">Flag</span></div>
+        <div class="vrow"><span>Cloud hosting</span><span class="r">$42,000</span><span class="r">$55,900</span><span class="r neg">+33.1%</span><span class="flag miss">MISS &middot; T3</span></div>
+        <div class="vrow"><span>Subscription revenue</span><span class="r">$310,000</span><span class="r">$338,200</span><span class="r pos">+9.1%</span><span class="flag beat">BEAT</span></div>
+        <div class="vrow"><span>Contractors</span><span class="r">$28,500</span><span class="r">$34,600</span><span class="r neg">+21.4%</span><span class="flag miss">MISS &middot; T2</span></div>
+        <div class="vrow"><span>Travel &amp; events</span><span class="r">$12,000</span><span class="r">$12,900</span><span class="r">+7.5%</span><span class="flag ok">Below floor</span></div>
+        <div class="vnote">Illustrative sample. Cloud hosting: 3rd straight month over plan, driven by usage growth.</div>
+      </div>
+    </a>
+
+    <div class="grid2">
+      <a class="proj reveal" href="https://huggingface.co/spaces/PhatNguyen39/Multi-Agent-Fin-Debate-System" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="kicker">Forecast review &middot; Decision support</span><span class="live"><span class="d"></span>Live demo</span></div>
+        <h3>Multi-Agent Financial Decision Support</h3>
+        <p>Simulates a forecast review meeting on real company financials pulled from SEC EDGAR filings, with deterministic validation checks on the data before any analysis runs. AI agents play revenue forecaster, cost challenger, risk officer and CFO, debate the plan, and reconcile to one documented recommendation with the full reasoning trail kept for review.</p>
+        <div class="tags"><span class="tag">SEC EDGAR</span><span class="tag">Data validation</span><span class="tag">LangGraph</span><span class="tag">Python</span></div>
+        <span class="proj-link">Open the demo &rarr;</span>
       </a>
-      <a class="card reveal" href="https://phatnguyen39-stock-prediction-pipeline.hf.space/dashboard" target="_blank" rel="noopener">
-        <div class="card-top"><span class="card-idx">02</span><span class="live"><span class="d"></span>LIVE</span></div>
-        <h3>Stock Direction Prediction Pipeline</h3>
-        <p>End-to-end ML pipeline for stock direction prediction with XGBoost &mdash; feature engineering, training, hyperparameter tuning, served behind an interactive real-time dashboard.</p>
-        <div class="tags"><span class="tag">XGBoost</span><span class="tag">Feature Eng.</span><span class="tag">Streamlit</span></div>
-        <span class="card-link">Live demo &rarr;</span>
-      </a>
-      <a class="card reveal" href="https://huggingface.co/spaces/PhatNguyen39/ai-variance-analyst" target="_blank" rel="noopener">
-        <div class="card-top"><span class="card-idx">03</span><span class="live"><span class="d"></span>LIVE</span></div>
-        <h3>FP&amp;A Copilot &mdash; AI Variance Analyst</h3>
-        <p>LLM + RAG system for automated budget-vs-actual analysis with full auditability. Combines anomaly detection with LLM-generated insights, producing executive-ready reports with traceable, hallucination-free outputs.</p>
-        <div class="tags"><span class="tag">RAG</span><span class="tag">Anomaly Detection</span><span class="tag">FastAPI</span></div>
-        <span class="card-link">Live demo &rarr;</span>
+      <a class="proj reveal" href="https://phatnguyen39-stock-prediction-pipeline.hf.space/dashboard" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="kicker">Financial data &middot; Forecasting</span><span class="live"><span class="d"></span>Live demo</span></div>
+        <h3>Equity Return Forecasting Pipeline</h3>
+        <p>End-to-end financial data pipeline: 50+ features engineered from raw market data, time-series cross-validation to prevent look-ahead bias, and results served on an interactive dashboard.</p>
+        <div class="tags"><span class="tag">XGBoost</span><span class="tag">SQL</span><span class="tag">Docker</span><span class="tag">Backtesting</span></div>
+        <span class="proj-link">Open the dashboard &rarr;</span>
       </a>
     </div>
   </div>
 </section>
-<section id="research">
+
+<section id="experience" class="alt">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-tag">02 //</span>
-      <h2 class="sec-title">Research</h2>
-      <span class="sec-line"></span>
+      <div class="sec-tag">Experience</div>
+      <h2 class="sec-title">Where I've done the work</h2>
     </div>
-    <div class="feature reveal">
-      <span class="feat-badge">&#9733; ACL 2025 &middot; System Demonstrations</span>
-      <h3>SlimLM: An Efficient Small Language Model for On-Device Document Assistance</h3>
-      <p class="authors">Thang M. Pham, <b>Phat T. Nguyen</b>, Seunghyun Yoon, Viet Dac Lai, Franck Dernoncourt, Trung Bui</p>
-      <p class="venue">Proc. of ACL 2025 (Vol. 3: System Demonstrations), pp. 436&ndash;447 &middot; Vienna</p>
-      <p>A series of small language models (125M&ndash;1B params) optimized to run fully on-device on a Samsung Galaxy S24 for document tasks &mdash; summarization, QA, question suggestion. We map the size / context-length / latency trade-offs for real smartphone deployment, cutting server cost and improving privacy. Published in the ACL 2025 System Demonstrations track; work done with Adobe Research.</p>
-      <div class="feat-links">
-        <a class="btn primary" href="https://aclanthology.org/2025.acl-demo.42/" target="_blank" rel="noopener">ACL Anthology &rarr;</a>
-        <a class="btn ghost" href="https://aclanthology.org/2025.acl-demo.42.pdf" target="_blank" rel="noopener">PDF</a>
-        <a class="btn ghost" href="https://arxiv.org/abs/2411.09944" target="_blank" rel="noopener">arXiv</a>
+
+    <div class="job reveal">
+      <div class="when">Sep 2026 &ndash; Present</div>
+      <div>
+        <h3>HR &amp; Accounts Payable</h3>
+        <div class="org">KNT, Inc. &middot; Newark, CA</div>
+        <ul>
+          <li>Lead the company's move from paper to paperless payroll and HR administration on ADP.</li>
+          <li>Process and code high-volume vendor invoices to GL accounts, with 3-way matching against POs and receiving logs.</li>
+          <li>Support month-end close: prepare AP accruals, assist with audit requests, maintain the vendor master file.</li>
+        </ul>
       </div>
     </div>
-    <div class="pub-row reveal">
+
+    <div class="job reveal">
+      <div class="when">2018 &ndash; 2021</div>
+      <div>
+        <h3>Financial Analyst</h3>
+        <div class="org">MIODx &middot; San Jose, CA</div>
+        <ul>
+          <li>Built financial forecasting models to project cash runway and support funding decisions.</li>
+          <li>Analyzed spending data to identify cost trends and improve budget allocation.</li>
+          <li>Managed project-level cost tracking for lab operations across multiple initiatives.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2017 &ndash; 2019</div>
+      <div>
+        <h3>Enrollment &amp; Program Analysis (Student Assistant)</h3>
+        <div class="org">California State University, East Bay</div>
+        <ul>
+          <li>Reconciled $150K+ in annual budgets across 12+ programs, resolving line-item variances to source records before fiscal close.</li>
+          <li>Analyzed 3 years of admissions and survey data (5,000+ applicant records) to find drivers of an 8% enrollment decline; presented recommendations to leadership.</li>
+          <li>Prepared cost estimates and negotiated pricing with 15+ vendors covering $50K+ in active purchasing.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2014 &ndash; 2016</div>
+      <div>
+        <h3>Product Marketing Analyst</h3>
+        <div class="org">VoxyPAD App &middot; Ho Chi Minh City, Vietnam</div>
+        <ul>
+          <li>Managed a $10K/month budget; built run-rate and cost-per-acquisition reports by channel and shifted spend away from underperformers, lifting conversion from 2.5% to 2.8% within the cap.</li>
+          <li>Acted as liaison between business, sales support and engineering, turning user feedback into scoped fixes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">2024 &ndash; Present</div>
+      <div>
+        <h3>Independent Developer &amp; Researcher</h3>
+        <div class="org">Self-directed</div>
+        <ul>
+          <li>Build, test, document and maintain the 3 deployed finance tools above, end to end.</li>
+          <li>Ran the full peer-review cycle with a multi-institution team: scoping, experiments, writing, reviewer response, camera-ready delivery.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Skills &amp; Education</div>
+      <h2 class="sec-title">Toolkit</h2>
+    </div>
+    <div class="skills">
+      <div class="skg lead reveal">
+        <h4>Finance</h4>
+        <div class="row"><span class="chip">Budget preparation &amp; monitoring</span><span class="chip">Variance analysis</span><span class="chip">Revenue &amp; cost forecasting</span><span class="chip">Financial modeling</span><span class="chip">Cost allocation</span><span class="chip">Reconciliation</span><span class="chip">Month-end close &amp; accruals</span><span class="chip">AP &amp; 3-way match</span><span class="chip">Management reporting</span></div>
+      </div>
+      <div class="skg reveal">
+        <h4>Data, BI &amp; Finance Systems</h4>
+        <div class="row"><span class="chip">SQL</span><span class="chip">Advanced Excel (pivots, lookups, scenario models)</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">QuickBooks</span><span class="chip">ADP</span><span class="chip">Python (Pandas, NumPy, SciPy)</span><span class="chip">ETL pipelines</span><span class="chip">Data validation</span><span class="chip">Relational modeling</span><span class="chip">Streamlit dashboards</span></div>
+      </div>
+      <div class="skg reveal">
+        <h4>Modeling &amp; Statistics</h4>
+        <div class="row"><span class="chip">Time-series forecasting</span><span class="chip">Predictive modeling</span><span class="chip">Statistical inference</span><span class="chip">Z-score outlier detection</span><span class="chip">Backtesting &amp; cross-validation</span><span class="chip">XGBoost</span><span class="chip">scikit-learn</span><span class="chip">PyTorch</span></div>
+      </div>
+      <div class="skg reveal">
+        <h4>Automation &amp; Deployment</h4>
+        <div class="row"><span class="chip">LLM / RAG</span><span class="chip">LangGraph</span><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">pytest</span></div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-c reveal">
+        <div class="deg">M.B.A., Finance</div>
+        <div class="sch">California State University, East Bay</div>
+        <div class="meta">2016 &ndash; 2018 &middot; GPA 3.88</div>
+      </div>
+      <div class="edu-c reveal">
+        <div class="deg">M.S., Computer Science (Machine Learning)</div>
+        <div class="sch">Georgia Institute of Technology</div>
+        <div class="meta">2021 &ndash; 2025 &middot; GPA 4.0</div>
+      </div>
+      <div class="edu-c reveal">
+        <div class="deg">B.S., International Business Economics</div>
+        <div class="sch">Foreign Trade University, Vietnam</div>
+        <div class="meta">2011 &ndash; 2015 &middot; GPA 3.52</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Publications</div>
+      <h2 class="sec-title">Peer-reviewed research</h2>
+    </div>
+    <div class="pub reveal">
       <span class="yr">2026</span>
       <div>
         <h4><a href="https://link.springer.com/chapter/10.1007/978-981-92-2014-4_26" target="_blank" rel="noopener">Toward Reliable Evaluation of LLM-Based Financial Multi-Agent Systems</a></h4>
-        <span class="v">DMO-FinTech Workshop &middot; PAKDD 2026</span>
-        <p style="color:var(--text-soft);font-size:.88rem;margin-top:8px">Audited evaluation validity across 14 LLM multi-agent systems against 5 methodology failures and proposed a Coordination Breakeven Spread metric.</p>
+        <div class="v">DMO-FinTech Workshop, PAKDD 2026 &middot; First author &middot; P. T. Nguyen, T. M. Pham</div>
+        <p>Audited evaluation validity across 14 LLM multi-agent systems for finance against 5 methodology failures, and proposed a Coordination Breakeven Spread metric.</p>
+      </div>
+    </div>
+    <div class="pub reveal">
+      <span class="yr">2025</span>
+      <div>
+        <h4><a href="https://aclanthology.org/2025.acl-demo.42/" target="_blank" rel="noopener">SlimLM: An Efficient Small Language Model for On-Device Document Assistance</a></h4>
+        <div class="v">ACL 2025, System Demonstrations &middot; with Adobe Research &middot; T. M. Pham, P. T. Nguyen, S. Yoon, V. D. Lai, F. Dernoncourt, T. Bui</div>
+        <p>Fine-tuned small language models (125M&ndash;1B params) for document summarization and Q&amp;A, quantized to run on a smartphone at 99%+ task accuracy.</p>
+        <div class="links"><a href="https://aclanthology.org/2025.acl-demo.42.pdf" target="_blank" rel="noopener">PDF</a><a href="https://arxiv.org/abs/2411.09944" target="_blank" rel="noopener">arXiv</a></div>
       </div>
     </div>
   </div>
 </section>
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-tag">03 //</span>
-      <h2 class="sec-title">About</h2>
-      <span class="sec-line"></span>
-    </div>
-    <div class="two">
-      <div class="about reveal">
-        <p>I like the full stack of the work &mdash; from <b>model internals</b> to a <b>working system</b> someone can actually use. I build ML pipelines end to end: feature engineering, training and tuning, and serving models behind real interfaces.</p>
-        <p>My research sits where <b>NLP meets financial systems</b>: how small models behave on-device, how multi-agent systems reason about markets, and how far we can trust an LLM to evaluate another LLM. Co-authoring SlimLM &mdash; published at ACL 2025 &mdash; gave me hands-on depth in efficient model design and real-device deployment.</p>
-        <p>I hold an <b>M.S. in CS (Machine Learning) from Georgia Tech</b> (4.0 GPA) and an <b>MBA in Finance</b> &mdash; so I can move between PyTorch and the financial question a model is actually meant to answer.</p>
-      </div>
-      <aside class="skills reveal">
-        <h4>// STACK</h4>
-        <div class="skg"><div class="lab">Languages</div><div class="row"><span class="chip">Python</span></div></div>
-        <div class="skg"><div class="lab">ML / AI</div><div class="row"><span class="chip">PyTorch</span><span class="chip">XGBoost</span><span class="chip">scikit-learn</span><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">RAG</span></div></div>
-        <div class="skg"><div class="lab">Data</div><div class="row"><span class="chip">Pandas</span><span class="chip">NumPy</span></div></div>
-        <div class="skg"><div class="lab">Tooling &amp; Serving</div><div class="row"><span class="chip">Hugging Face</span><span class="chip">FastAPI</span><span class="chip">Gradio</span><span class="chip">Streamlit</span><span class="chip">Git</span></div></div>
-      </aside>
-    </div>
-  </div>
-</section>
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-tag">04 //</span>
-      <h2 class="sec-title">Experience &amp; Education</h2>
-      <span class="sec-line"></span>
-    </div>
-    <div class="two">
-      <div class="reveal">
-        <div class="tl">
-          <div class="ti">
-            <div class="when">2017 &mdash; 2018</div>
-            <h4>Student Assistant</h4>
-            <div class="org">California State University, East Bay</div>
-            <p>Analyzed admissions data and surveys to identify enrollment decline drivers and presented action plans to leadership; managed summer camp budgets end-to-end, including cost negotiation, margin forecasting, and financial reconciliation.</p>
-          </div>
-          <div class="ti">
-            <div class="when">2014 &mdash; 2016</div>
-            <h4>Product Marketing Analyst</h4>
-            <div class="org">VoxyPAD App</div>
-            <p>Conducted quantitative market research and cost-structure analysis to evaluate product profitability and growth potential; contributed to product feature design and UX optimization using QA and user data to inform iteration.</p>
-          </div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="tl">
-          <div class="ti">
-            <div class="when">May 2025</div>
-            <h4>M.S. Computer Science &mdash; Machine Learning</h4>
-            <div class="org">Georgia Institute of Technology &middot; 4.0 GPA</div>
-          </div>
-          <div class="ti">
-            <div class="when">2018</div>
-            <h4>MBA &mdash; Finance</h4>
-            <div class="org">California State University, East Bay</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 <section id="contact" class="contact">
   <div class="wrap">
     <div class="panel reveal">
-      <h2>Let's build something.</h2>
-      <p>Open to ML / AI engineering roles. Happy to walk through any of these systems in detail.</p>
+      <h2>Let's talk.</h2>
+      <p>Open to FP&amp;A Systems, Financial Operations, Finance Automation, RevOps and Financial Data Analyst roles in the Bay Area or remote. Happy to walk through any of these tools live.</p>
       <div class="contact-links">
         <a class="btn primary" href="mailto:phat.thnguyen@gmail.com">Email me &rarr;</a>
-        <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Download r&eacute;sum&eacute;</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/phat-ng/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute;</a>
         <a class="btn ghost" href="https://github.com/NGUYENTHINHPHAT" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/phat-ng/" target="_blank" rel="noopener" id="li">LinkedIn</a>
-        <a class="btn ghost" href="https://aclanthology.org/2025.acl-demo.42/" target="_blank" rel="noopener">ACL</a>
       </div>
+      <div class="auth">Fremont, CA &middot; U.S. Permanent Resident, no sponsorship required</div>
     </div>
   </div>
 </section>
-<footer><div class="wrap">&copy; 2026 Phat T. Nguyen &middot; designed &amp; built from scratch</div></footer>
+
+<footer><div class="wrap">&copy; 2026 Phat T. Nguyen</div></footer>
+
 <script>
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.06+'s';io.observe(el)});
-  window.addEventListener('load',()=>{document.querySelectorAll('header .reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),110*i))});
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.05+'s';io.observe(el)});
 </script>
 </body>
 </html>
